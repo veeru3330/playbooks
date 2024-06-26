@@ -1,0 +1,24 @@
+---
+- name: Tagging in Ansible
+  hosts: all
+  gather_facts: false
+  become: yes 
+  tasks:
+   - name: Install tree
+     apt:
+      name: tree
+      state: present
+      update_cache: yes
+     tags: 
+       - tree_installation
+       - always
+   - name: Create user
+     user:
+      name: Anusha
+      password: intelliqit
+     tags: user_creation
+   - name: Copy /etc/passwd file
+     copy:
+      src: /etc/passwd
+      dest: /tmp
+...
