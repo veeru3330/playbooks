@@ -1,0 +1,14 @@
+--- 
+- name: Use with_sequence for calling multiple child playbooks
+  hosts: all
+  serial: 1
+  tasks:
+    - name: Call multiple child playbooks
+      include_tasks: "apache{{item}}"
+      with_sequence: count=4
+
+
+...
+
+
+
